@@ -1,19 +1,20 @@
 import { position, velocity } from "../App.types";
 
-export const calculateTotalMoonsEnergy = (options: {
+export const getTotalMoonsEnergy = (options: {
   moonPositions: Array<position>;
   moonVelocities: Array<velocity>;
 }) => {
   const { moonPositions, moonVelocities } = options;
 
+  // Validation - block for optimisation
   if (moonPositions.length !== moonVelocities.length) {
-    throw "Error, different number of velocities and positions";
+    throw new Error("Error, different number of velocities and positions");
   }
 
   return moonPositions.reduce(
     (accEnergy, curMoonPosition, index) =>
       accEnergy +
-      calculateMoonEnergy({
+      getMoonEnergy({
         moonPosition: curMoonPosition,
         moonVelocity: moonVelocities[index],
       }),
@@ -21,7 +22,7 @@ export const calculateTotalMoonsEnergy = (options: {
   );
 };
 
-export const calculateMoonEnergy = (options: {
+export const getMoonEnergy = (options: {
   moonPosition: position;
   moonVelocity: velocity;
 }) => {

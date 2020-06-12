@@ -1,6 +1,6 @@
 import { position, velocity } from "../App.types";
 
-export const updateMoonPosition = (options: {
+export const getMoonPositionByApplyingVelocity = (options: {
   moonPosition: position;
   moonVelocity: velocity;
 }): position => ({
