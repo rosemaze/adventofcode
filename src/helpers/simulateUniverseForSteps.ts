@@ -4,7 +4,7 @@ import { getNeighbourMoonPositions } from "./getNeighbourMoonPositions";
 import { getMoonInOrbitVelocity } from "./getMoonInOrbitVelocity";
 import { getMoonPositionByApplyingVelocity } from "./getMoonPositionByApplyingVelocity";
 
-export const getAllMoonsPosVelForSteps = (options: {
+export const simulateUniverseForSteps = (options: {
   steps: number;
   initialPositions: Array<position>;
 }) => {
@@ -13,10 +13,10 @@ export const getAllMoonsPosVelForSteps = (options: {
   let positions = [...initialPositions];
   const velocities = [...INITIAL_MOON_VELOCITIES];
 
-  for (var j = 0; j < steps; j++) {
+  for (let j = 0; j < steps; j++) {
     // We need to calculate all the moons before setting the new positions, so use a new array
     const newPositions = [];
-    for (var i = 0; i < positions.length; i++) {
+    for (let i = 0; i < positions.length; i++) {
       // Get neighbours of current moon
       const neighbourMoonPositions = getNeighbourMoonPositions({
         currentMoonIndex: i,
@@ -39,8 +39,8 @@ export const getAllMoonsPosVelForSteps = (options: {
     }
     // Update all moons positions at once for the next step
     positions = [...newPositions];
-    console.log("v", velocities);
-    console.log("p", positions);
+    // console.log("v", velocities);
+    // console.log("p", positions);
   }
 
   return {

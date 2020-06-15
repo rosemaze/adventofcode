@@ -1,20 +1,24 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { getAllMoonsPosVelForSteps } from "./helpers/getAllMoonsPosVelForSteps";
-import { getTotalMoonsEnergy } from "./helpers/getTotalMoonsEnergy";
+import { simulateUniverseForSteps } from "./helpers/simulateUniverseForSteps";
+// import { getTotalMoonsEnergy } from "./helpers/getTotalMoonsEnergy";
 import {
   MOON_POSITIONS_EXAMPLE_1,
   // MOON_POSITIONS_EXAMPLE_2,
   // MOON_POSITIONS_PUZZLE_INPUT,
 } from "./App.constants";
-import { getAllMoonsPosVelForSteps2 } from "./helpers/getAllMoonsPosVelForSteps2";
+// import { simulateUniverseUntilRepeatByAxis } from "./helpers2/simulateUniverseUntilRepeatByAxis";
+import { simulateImaginaryUniverseByAxisForSteps } from "./helpers4/simulateImaginaryUniverseByAxisForSteps";
+import { simulateUniverseByAxisForSteps } from "./helpers3/simulateUniverseByAxisForSteps";
+import { getImaginaryMoon } from "./helpers4/getImaginaryMoon";
+import { getRealOrbitAxisPattern } from "./helpers4/getRealOrbitAxisPattern";
 
 const App = () => {
   let initialPositions = [...MOON_POSITIONS_EXAMPLE_1];
 
   // Part 1
-  /*const result = getAllMoonsPosVelForSteps({
+  /*const result = simulateUniverseForSteps({
     steps: 1000,
     initialPositions,
   });
@@ -29,10 +33,54 @@ const App = () => {
   */
 
   // Part 2
-  // TIP: always compare current position N with position N - 2
-  const result = getAllMoonsPosVelForSteps2({
-    initialPositions,
+  /*
+  const result = simulateUniverseUntilRepeatByAxis({
+    initialPositionsInOneAxis: [
+      initialPositions[0].x,
+      initialPositions[1].x,
+      initialPositions[2].x,
+      initialPositions[3].x,
+    ],
   });
+  */
+
+  // TEST
+
+  const testX = getRealOrbitAxisPattern({
+    initialPositionsInOneAxis: [
+      initialPositions[0].x,
+      initialPositions[1].x,
+      initialPositions[2].x,
+      initialPositions[3].x,
+    ],
+  });
+  const testY = getRealOrbitAxisPattern({
+    initialPositionsInOneAxis: [
+      initialPositions[0].y,
+      initialPositions[1].y,
+      initialPositions[2].y,
+      initialPositions[3].y,
+    ],
+  });
+  const testZ = getRealOrbitAxisPattern({
+    initialPositionsInOneAxis: [
+      initialPositions[0].z,
+      initialPositions[1].z,
+      initialPositions[2].z,
+      initialPositions[3].z,
+    ],
+  });
+  console.log({ testX, testY, testZ });
+
+  /*const test = simulateUniverseByAxisForSteps({
+    steps: 2772,
+    initialPositionsInOneAxis: [
+      initialPositions[0].y,
+      initialPositions[1].y,
+      initialPositions[2].y,
+      initialPositions[3].y,
+    ],
+  });*/
 
   return (
     <div className="App">

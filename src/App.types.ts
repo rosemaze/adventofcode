@@ -9,3 +9,8 @@ export interface velocity {
   y: number;
   z: number;
 }
+
+export interface AxisOrbitPattern {
+  positionPattern: number[][];
+  velocityPattern: number[][];
+}

@@ -4,9 +4,8 @@ import { getNeighbourMoonPositions } from "./getNeighbourMoonPositions";
 import { getMoonInOrbitVelocity } from "./getMoonInOrbitVelocity";
 import { getMoonPositionByApplyingVelocity } from "./getMoonPositionByApplyingVelocity";
 import { isSamePosition } from "./isSamePosition";
-import { isInitialVelocity } from "./isInitialVelocity";
 
-export const getAllMoonsPosVelForSteps2 = (options: {
+export const simulateUniverseUntilRepeat = (options: {
   initialPositions: Array<position>;
 }) => {
   const { initialPositions } = options;
@@ -17,7 +16,7 @@ export const getAllMoonsPosVelForSteps2 = (options: {
   let steps = 0;
   let isFoundSamePosition = false;
 
-  while (!isFoundSamePosition) {
+  while (!isFoundSamePosition || steps < 2773) {
     // We need to calculate all the moons before setting the new positions, so use a new array
     const newPositions = [];
     const newVelocities = [];
@@ -48,8 +47,7 @@ export const getAllMoonsPosVelForSteps2 = (options: {
       isSamePosition({
         positions1: initialPositions,
         positions2: newPositions,
-      }) &&
-      isInitialVelocity(newVelocities)
+      })
     ) {
       isFoundSamePosition = true;
       console.log(

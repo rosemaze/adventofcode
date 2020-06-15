@@ -1,5 +1,3 @@
-import { position } from "../App.types";
-
 // NOTE: For efficiency's sake this function only handles exactly 4 moons!!!
 
 export const getNeighbourMoonPositionsInOneAxis = (options: {
