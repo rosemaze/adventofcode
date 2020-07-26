@@ -63,8 +63,8 @@ export const getRealOrbitAxisPattern = (options: {
     positionPattern.push(newAxisPositions);
     velocityPattern.push(newAxisVelocities);
 
-    console.log("v", i, axisVelocities);
-    console.log("p", axisPositions);
+    // console.log("v", i, axisVelocities);
+    // console.log("p", axisPositions);
   }
 
   return {
